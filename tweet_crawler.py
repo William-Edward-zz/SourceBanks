@@ -3,6 +3,11 @@ This code fetches tweets from various accounts,
 stores them in a variety of useful formats as desired,
 verifies whether or not they have the same content.
 and then tweets them accordingly.
+
+It is a general purpose machine that can adapt to any type 
+of twitter content. This set of tools relies not only on tweepy,
+but on twitter itself, making it highly dependent on a volatile
+platform.
 '''
 
 import tweepy
@@ -29,7 +34,7 @@ def tweet_get(screen_name):
     
     print("Fetching tweets from", screen_name)
     
-    new_tweets = api.user_timeline(screen_name = screen_name,count=1) #get 10 recent tweets
+    new_tweets = api.user_timeline(screen_name = screen_name,count=1000) #get 10 recent tweets
     
     #extend is important here
     tweets.extend(new_tweets)
@@ -49,7 +54,6 @@ tweet_get("reuters")
 tweet_get("wsj")
 tweet_get("time")
 tweet_get("abc")
-'''
 
 tweet_get("washingtonpost")
 tweet_get("bbcbreaking")
@@ -73,7 +77,8 @@ tweet_get("ap")
 tweet_get("financialtimes")
 tweet_get("independent")
 tweet_get("huffpost")
-'''
+
+#####################################################################
 print('\n')
 print(tweets_to_post)
 print('\n')
@@ -99,7 +104,7 @@ def headline_match(total, query): #see if a specific query appears twice
             matches.append(i)
             i += 1
     for i in matches[1:]: #only print matches greater than 0
-        print(str(matches) + query)
+        print(str(matches) + " " + query)
 
 for loops in range(len(total)): #repeat function for each word in total
     headline_match(total, total[loops])
