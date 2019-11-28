@@ -14,10 +14,10 @@ import tweepy
 import time
 
 #API keys on your account
-consumer_key=""
-consumer_secret=""
-access_token=""
-access_secret=""
+consumer_key="H1mQSNPlrV6Gx05l1PAqyhPuZ"
+consumer_secret="gyxcRYbattTU1u1PFPlLbTot7xryXcNuxcsKJvpyQ3qNHxW1Bc"
+access_token="1170277041222115328-DTKCIRu07nUzUb1nt6cQs19G5mIPOx"
+access_secret="n9tXsh4jUKh7yY3UWp37kWXPALBMPu1JkeA7NLAiLBHQb"
 
 #sign in on your account
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -28,13 +28,37 @@ api = tweepy.API(auth)
 source_tweets = []
 tweets_to_post = []
 
+print('\n')
+print('\n')
+print('\n')
+print('###############LOOKUP_USERS###############')
+
+print(api.lookup_users(screen_names=['tix', 'xy', 'abc']))
+print('\n')
+print('\n')
+print('\n')
+
+print('###############GET_USER###############')
+
+print(api.get_user(screen_name='tix'))
+print('\n')
+print('\n')
+print('\n')
+
+print('###############SEARCH_USERS###############')
+
+print(api.search_users('tix'))
+print('\n')
+print('\n')
+print('\n')
+
 def tweet_get(screen_name):
     
     tweets = []	
     
     print("Fetching tweets from", screen_name)
     
-    new_tweets = api.user_timeline(screen_name = screen_name,count=1000) #get 10 recent tweets
+    new_tweets = api.user_timeline(screen_name = screen_name,count=10) #get 10 recent tweets
     
     #extend is important here
     tweets.extend(new_tweets)
@@ -47,6 +71,8 @@ def tweet_get(screen_name):
 
 print('\n')
 
+tweet_get("tix")
+'''
 tweet_get("cnn")
 tweet_get("nytimes")
 tweet_get("theeconomist")
@@ -77,6 +103,7 @@ tweet_get("ap")
 tweet_get("financialtimes")
 tweet_get("independent")
 tweet_get("huffpost")
+'''
 
 #####################################################################
 print('\n')
